@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import userRoute from "./routes/userRoute.js"
 import productRoute from "./routes/productRoute.js"
 import orderRoute from "./routes/orderRoute.js"
+import cors from "cors"
 
 
 const app = express();
@@ -17,6 +18,9 @@ const connect= async()=>{
     }}
 //midelware 
 app.use(express.json())
+
+app.use(express.urlencoded({ extended: true }));
+app.use(cors("*"));
 
 
 app.use("/api/user",userRoute)
